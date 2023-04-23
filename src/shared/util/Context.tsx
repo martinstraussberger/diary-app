@@ -1,5 +1,5 @@
 import React from 'react';
-import { ContextProps, ListContextProps } from '../../interfaces/interfaces';
+import { ListContextProps, ContextProps } from '../../interfaces/ContextInterfaces';
 
 export const ListContext = React.createContext<ListContextProps>({
   list: [],

@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { DiaryEntryProps } from '../../interfaces/interfaces';
+import { DiaryEntryListProps } from '../../interfaces/interfaces';
 
 import { EntryList } from './EntryList';
 import { ListContext } from '../../shared/util/Context';
@@ -26,7 +26,7 @@ export const NewEntry: React.FC = () => {
     setDisplayList(!displayList);
   };
 
-  const [list, setList] = useState<DiaryEntryProps[]>([]);
+  const [list, setList] = useState<DiaryEntryListProps[]>([]);
   const [title, setTitle] = useState('');
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [content, setContent] = useState('');

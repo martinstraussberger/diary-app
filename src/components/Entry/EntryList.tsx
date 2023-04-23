@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useContext, useCallback } from 'react';
-import { DiaryEntryProps, EntryListProps } from '../../interfaces/interfaces';
+import { DiaryEntryListProps, EntryListProps } from '../../interfaces/interfaces';
 import { DiaryEntry } from './DiaryEntry';
 import { Input } from '../../shared/components/FormElements/Input';
 import { Button } from '../../shared/components/FormElements/Button';
@@ -23,13 +23,13 @@ export const EntryList: React.FC<EntryListProps> = ({ list }) => {
   const sortedList = useMemo(() => {
     return filteredList
       .filter((entry) => entry.date)
-      .sort((a: DiaryEntryProps, b: DiaryEntryProps) => {
+      .sort((a: DiaryEntryListProps, b: DiaryEntryListProps) => {
         return new Date(b.date).getTime() - new Date(a.date).getTime();
       });
   }, [filteredList]);
 
   const groupedByWeek = useMemo(() => {
-    const groups: { [key: string]: DiaryEntryProps[] } = {};
+    const groups: { [key: string]: DiaryEntryListProps[] } = {};
 
     sortedList.forEach((entry) => {
       const date = new Date(entry.date);
@@ -100,7 +100,7 @@ export const EntryList: React.FC<EntryListProps> = ({ list }) => {
                   content,
                   tag,
                   index,
-                }: DiaryEntryProps) => (
+                }: DiaryEntryListProps) => (
                   <DiaryEntry
                     key={index}
                     title={title}
@@ -121,6 +121,9 @@ export const EntryList: React.FC<EntryListProps> = ({ list }) => {
                         icon={<TrashIcon />}
                       />
                     }
+                    id={''}
+                    selectedOption={''}
+                    index={0}
                   />
                 )
               )}

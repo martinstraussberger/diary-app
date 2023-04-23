@@ -1,16 +1,9 @@
 import React from 'react';
+import { DiaryEntryProps } from '../../interfaces/interfaces';
+
 import './DiaryEntry.css';
 
-export interface DiaryEntry {
-  title: string;
-  content: string;
-  tag: string;
-  date: Date;
-  customElement: JSX.Element;
-  icon: string;
-}
-
-export const DiaryEntry: React.FC<DiaryEntry> = ({
+export const DiaryEntry: React.FC<DiaryEntryProps> = ({
   title,
   content,
   tag,

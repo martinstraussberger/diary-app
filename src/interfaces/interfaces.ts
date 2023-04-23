@@ -6,7 +6,13 @@ export interface DropdownIconProps {
 }
 
 /* Entry */
-export interface DiaryEntryProps {
+export interface DiaryEntryProps extends DiaryEntryListProps {
+  customElement: JSX.Element;
+  icon: string;
+}
+
+/* EntryList */
+export interface DiaryEntryListProps {
   id: string;
   title: string;
   selectedOption: string;
@@ -15,19 +21,8 @@ export interface DiaryEntryProps {
   tag: string;
   index: number;
 }
-
 export interface EntryListProps {
-  list: DiaryEntryProps[];
-}
-
-export interface ContextProps {
-  displayList: boolean;
-  handleDropdown: () => void;
-}
-
-export interface ListContextProps {
-  list: DiaryEntryProps[];
-  setList: React.Dispatch<React.SetStateAction<DiaryEntryProps[]>>;
+  list: DiaryEntryListProps[];
 }
 
 /* SelectDropdown */
