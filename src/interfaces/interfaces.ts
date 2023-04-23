@@ -25,15 +25,10 @@ export interface ContextProps {
   handleDropdown: () => void;
 }
 
-interface ListContextProps {
+export interface ListContextProps {
   list: DiaryEntryProps[];
   setList: React.Dispatch<React.SetStateAction<DiaryEntryProps[]>>;
 }
-
-export const ListContext = React.createContext<ListContextProps>({
-  list: [],
-  setList: () => {},
-});
 
 /* SelectDropdown */
 export interface Option {

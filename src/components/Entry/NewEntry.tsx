@@ -1,6 +1,6 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { v4 as uuid } from 'uuid';
-import { DiaryEntryProps, ListContext } from '../../interfaces/interfaces';
+import { DiaryEntryProps } from '../../interfaces/interfaces';
 
 import { EntryList } from './EntryList';
 import { Input } from '../../shared/components/FormElements/Input';
@@ -16,6 +16,7 @@ import { moodycons } from '../../shared/util/moodiconList';
 
 import './NewEntry.css';
 import '../../shared/components/FormElements/Button.css';
+import { ListContext } from '../../shared/util/Context';
 
 const id = uuid();
 
@@ -32,6 +33,8 @@ export const NewEntry: React.FC = () => {
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [content, setContent] = useState('');
   const [tag, setTag] = useState('');
+
+  const listProvider = useMemo(() => ({ list, setList }), [list, setList]);
 
   const onSubmit = useCallback(
     (event: React.FormEvent<HTMLFormElement>) => {
@@ -55,12 +58,12 @@ export const NewEntry: React.FC = () => {
         },
       ]);
     },
-    [title, selectedOption, content]
+    [title, selectedOption, content, date, tag, list]
   );
 
   return (
     <>
-      <ListContext.Provider value={{ list, setList }}>
+      <ListContext.Provider value={listProvider}>
         <form className='entry-form' action='' onSubmit={onSubmit}>
           <Input
             className='entry-input'

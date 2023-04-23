@@ -1,5 +1,10 @@
 import React from 'react';
-import { ContextProps } from '../../interfaces/interfaces';
+import { ContextProps, ListContextProps } from '../../interfaces/interfaces';
+
+export const ListContext = React.createContext<ListContextProps>({
+  list: [],
+  setList: () => {},
+});
 
 export const EntryListContext = React.createContext<ContextProps>({
   displayList: false,

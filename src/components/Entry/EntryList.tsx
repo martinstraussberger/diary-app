@@ -1,14 +1,10 @@
 import React, { useState, useMemo, useContext } from 'react';
-import {
-  DiaryEntryProps,
-  EntryListProps,
-  ListContext,
-} from '../../interfaces/interfaces';
+import { DiaryEntryProps, EntryListProps } from '../../interfaces/interfaces';
 import { DiaryEntry } from './DiaryEntry';
 import { Input } from '../../shared/components/FormElements/Input';
 import { Button } from '../../shared/components/FormElements/Button';
 import { TrashIcon } from '../../shared/components/UIElements/utils/Icons';
-import { EntryListContext } from '../../shared/util/Context';
+import { EntryListContext, ListContext } from '../../shared/util/Context';
 import { options } from '../../shared/util/Constants';
 
 import './EntryList.css';
