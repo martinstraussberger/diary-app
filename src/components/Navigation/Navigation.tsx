@@ -5,7 +5,7 @@ export const Navigation = () => {
 
   return (
     <>
-      <section className='grid-item-1 header'>
+      <section className='grid-item __item-1 header'>
         <header className='title'>
           <p>{title}</p>
         </header>

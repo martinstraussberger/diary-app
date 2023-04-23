@@ -1,13 +1,14 @@
 :root {
   --primary: #fff;
-  --secondary-50: #f3fff1;
+  --secondary-50: #ebf9e8;
   --secondary-100: #dfffda;
+  --secondary-200: #8de67f;
 
   --text: #1c211a;
   --text-inverted: #f7f7f7;
 
-  --neutral-100: #f5f5f5;
-  --neutral-100-100: #adadad;
+  --neutral-100: #e3e3e3;
+  --neutral-200: #adadad;
 
   --danger: #c94949;
 }

@@ -37,38 +37,31 @@ textarea {
   grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
 }
 
-.grid-item-1 {
+.grid-item {
   display: flex;
-  height: 58px;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.__item-1 {
+  height: 58px;
   grid-column: 1;
   grid-row: 1 / 2;
 }
 
-.grid-item-2 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+.__item-2 {
   margin: 0.5rem;
-  grid-column: 1;
-  grid-row: 3 / max-content;
 }
 
-.grid-item-3 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.__item-3 {
   margin: 0.5rem;
   grid-column: 1;
   grid-row: 3 / max-content;
 }
 
 .header {
-  background: var(--secondary-100);
+  background: var(--secondary-50);
 }
 
 .title {

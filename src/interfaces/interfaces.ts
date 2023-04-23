@@ -66,5 +66,6 @@ export interface ButtonProps {
   id?: string;
   label?: string;
   onClick?: () => void;
-  icon: JSX.Element;
+  icon?: JSX.Element;
+  text?: string | JSX.Element;
 }

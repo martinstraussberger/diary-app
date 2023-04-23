@@ -14,12 +14,11 @@ export const DiaryEntry: React.FC<DiaryEntryProps> = ({
   return (
     <div className='entry-row'>
       <div className='entry-row-header'>
-        <h4> I am {icon}</h4>
+        <p style={{ textAlign: 'right' }}>{date.toLocaleDateString('de-DE')}</p>
         <h3>{title}</h3>
-        <p>{date.toLocaleDateString('de-DE')}</p>
+        {icon && <h5> I am {icon}</h5>}
       </div>
       <div className='entry-row-content'>
-        <p>Note:</p>
         <p>{content}</p>
       </div>
       <div className='entry-row-tags'>

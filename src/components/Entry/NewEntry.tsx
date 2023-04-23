@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { DiaryEntryListProps } from '../../interfaces/interfaces';
 
 import { EntryList } from './EntryList';
@@ -108,10 +108,10 @@ export const NewEntry: React.FC = () => {
             type='submit'
             ariaLabel='add-button'
             disabled={false}
-            icon={<AddIcon />}
+            text={<h3>Save</h3>}
           />
         </form>
-        <section className='grid-item-2'>
+        <section className='grid-item __item-2'>
           <label htmlFor='dropdown-icon'>Show all Diary Entries</label>
           <div className='dropdown-icon'>
             {!displayList ? (

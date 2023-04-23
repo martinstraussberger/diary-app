@@ -78,7 +78,7 @@ export const EntryList: React.FC<EntryListProps> = ({ list }) => {
 
   return (
     <EntryListContext.Provider value={dropdownListMemoProvider}>
-      <section className='grid-item-2'>
+      <section className='grid-item __item-3'>
         <Input
           className='entry-input'
           id={`${'content' + id}`}

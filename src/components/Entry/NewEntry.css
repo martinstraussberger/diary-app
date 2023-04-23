@@ -4,7 +4,6 @@
   padding: 1rem;
   width: 86%;
   max-width: 40rem;
-  border-radius: 6px;
   background: var(--primary);
 }
 
@@ -21,7 +20,6 @@
   width: 10%;
   height: auto;
   padding: 12px;
-  border-radius: 6px;
   border: none;
   background: var(--secondary-100);
 }

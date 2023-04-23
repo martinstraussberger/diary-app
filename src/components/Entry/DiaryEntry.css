@@ -1,6 +1,8 @@
 .entry-row {
   display: grid;
   text-align: left;
+  border-radius: 6px;
+  background-color: var(--secondary-50);
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
@@ -9,8 +11,7 @@
 .entry-row-tags,
 .entry-row-trash {
   word-break: break-all;
-  padding: 20px;
-  background-color: var(--secondary-50);
+  padding: 20px 24px 0 24px;
 }
 
 .entry-row-header h3 {

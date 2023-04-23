@@ -8,6 +8,7 @@ export const Button: React.FC<ButtonProps> = ({
   type,
   disabled,
   icon,
+  text,
   id,
   label,
   ariaLabel,
@@ -22,6 +23,7 @@ export const Button: React.FC<ButtonProps> = ({
         disabled={disabled}
       >
         {icon}
+        {text}
       </button>
       <label htmlFor={id}>{label}</label>
     </div>

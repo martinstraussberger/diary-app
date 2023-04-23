@@ -1,12 +1,15 @@
 import React from 'react';
-import { ListContextProps, ContextProps } from '../../interfaces/ContextInterfaces';
+import {
+  EntryListContextProps,
+  EntryContextProps,
+} from '../../interfaces/ContextInterfaces';
 
-export const ListContext = React.createContext<ListContextProps>({
+export const ListContext = React.createContext<EntryContextProps>({
   list: [],
   setList: () => {},
 });
 
-export const EntryListContext = React.createContext<ContextProps>({
+export const EntryListContext = React.createContext<EntryListContextProps>({
   displayList: false,
   handleDropdown: () => {},
 });

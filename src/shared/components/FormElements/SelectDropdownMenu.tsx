@@ -31,17 +31,21 @@ export const SelectDropdownMenu: React.FC<SelectDropdownMenuProps<Option>> = ({
 
   useEffect(() => {
     if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
     } else {
-      document.addEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     }
+
     return () => {
-      document.addEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isOpen]);
 
   useEffect(() => {
-    setSelectedOption(null);
-  }, [onChange, selectedOption]);
+    return () => {
+      setSelectedOption(null);
+    };
+  }, []);
 
   return (
     <div className='select-dropdown-menu' ref={dropdownRef}>
