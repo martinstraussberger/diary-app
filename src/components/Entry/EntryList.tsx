@@ -50,7 +50,7 @@ export const EntryList: React.FC<EntryListProps> = ({ list }) => {
       const weekLabel = `${weekStart.toLocaleDateString(
         'de-DE',
         options
-      )}} - ${weekEnd.toLocaleDateString('de-DE', options)}}`;
+      )} - ${weekEnd.toLocaleDateString('de-DE', options)}`;
       if (!groups[weekLabel]) {
         groups[weekLabel] = [];
       }
@@ -91,7 +91,7 @@ export const EntryList: React.FC<EntryListProps> = ({ list }) => {
                 ({
                   id,
                   title,
-                  setSelectedOption,
+                  selectedOption,
                   date,
                   content,
                   tag,
@@ -100,7 +100,7 @@ export const EntryList: React.FC<EntryListProps> = ({ list }) => {
                   <DiaryEntry
                     key={index}
                     title={title}
-                    icon={setSelectedOption}
+                    icon={selectedOption}
                     date={date}
                     content={content}
                     tag={tag}

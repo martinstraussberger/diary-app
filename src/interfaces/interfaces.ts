@@ -9,7 +9,7 @@ export interface DropdownIconProps {
 export interface DiaryEntryProps {
   id: string;
   title: string;
-  setSelectedOption: string;
+  selectedOption: string;
   date: Date;
   content: string;
   tag: string;

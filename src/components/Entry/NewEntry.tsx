@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
+import { v4 as uuid } from 'uuid';
 import { DiaryEntryProps, ListContext } from '../../interfaces/interfaces';
 
 import { EntryList } from './EntryList';
@@ -16,6 +17,8 @@ import { moodycons } from '../../shared/util/moodiconList';
 import './NewEntry.css';
 import '../../shared/components/FormElements/Button.css';
 
+const id = uuid();
+
 export const NewEntry: React.FC = () => {
   const [displayList, setDisplayList] = useState<boolean>(false);
   const [selectedOption, setSelectedOption] = useState<any | null>(null);
@@ -26,33 +29,34 @@ export const NewEntry: React.FC = () => {
 
   const [list, setList] = useState<DiaryEntryProps[]>([]);
   const [title, setTitle] = useState('');
-  const id = Math.random().toString();
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [content, setContent] = useState('');
   const [tag, setTag] = useState('');
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setTitle('');
-    setSelectedOption('');
-    setContent('');
-    setTag('');
-    setList([
-      ...list,
-      {
-        id,
-        title,
-        // selectedMoodycon,
-        setSelectedOption: selectedOption
-          ? selectedOption.value + selectedOption.label
-          : '',
-        date: new Date(date),
-        content,
-        tag,
-        index: list.length,
-      },
-    ]);
-  };
+  const onSubmit = useCallback(
+    (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      setTitle('');
+      setSelectedOption('');
+      setContent('');
+      setTag('');
+      setList([
+        ...list,
+        {
+          id,
+          title,
+          selectedOption: selectedOption
+            ? `${selectedOption.value}${selectedOption.label}`
+            : '',
+          date: new Date(date),
+          content,
+          tag,
+          index: list.length,
+        },
+      ]);
+    },
+    [title, selectedOption, content]
+  );
 
   return (
     <>
@@ -80,7 +84,6 @@ export const NewEntry: React.FC = () => {
             elementType='input'
             label='Date:'
             type='date'
-            // TODO - Prefill Date - add date validator?
             value={date}
             onChange={(event) => setDate(event.target.value)}
           />
@@ -97,7 +100,6 @@ export const NewEntry: React.FC = () => {
             id='tags'
             elementType='input'
             label='Tags:'
-            // TODO - add tag validator?
             value={tag}
             onChange={(event) => setTag(event.target.value)}
           />
