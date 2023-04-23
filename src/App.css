@@ -1,38 +1,78 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,200;0,300;0,400;0,500;1,200;1,500&display=swap');
+
+body {
+  font-family: 'Roboto Mono', monospace;
+  margin: 0 auto;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+textarea {
+  word-break: normal;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+::placeholder {
+  font-size: 16px;
+  font-weight: 500;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--text);
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  /* Internet ExplorerIE */
+  color: var(--text);
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: var(--text);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
+}
+
+.grid-item-1 {
+  display: flex;
+  height: 58px;
+  align-items: center;
+  justify-content: center;
+  grid-column: 1;
+  grid-row: 1 / 2;
+}
+
+.grid-item-2 {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
+  margin: 0.5rem;
+  grid-column: 1;
+  grid-row: 3 / max-content;
 }
 
-.App-link {
-  color: #61dafb;
+.grid-item-3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem;
+  grid-column: 1;
+  grid-row: 3 / max-content;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header {
+  background: var(--secondary-100);
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--text);
 }

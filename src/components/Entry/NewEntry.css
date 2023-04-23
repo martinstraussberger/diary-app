@@ -1,0 +1,27 @@
+.entry-form {
+  list-style: none;
+  margin: 0.5rem auto;
+  padding: 1rem;
+  width: 86%;
+  max-width: 40rem;
+  border-radius: 6px;
+  background: var(--primary);
+}
+
+.dropdown-icon {
+  cursor: pointer;
+  width: 86%;
+}
+
+.moodicon-dropdown {
+  display: block;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 10%;
+  height: auto;
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  background: var(--secondary-100);
+}

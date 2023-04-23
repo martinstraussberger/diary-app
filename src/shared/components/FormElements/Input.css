@@ -1,0 +1,52 @@
+.form {
+  margin: 1rem 0;
+}
+
+.form textarea {
+  resize: vertical;
+}
+
+.form label,
+.form input,
+.form textarea {
+  display: block;
+}
+
+.form label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.form input,
+.form textarea {
+  width: 90%;
+  border: none;
+  font: inherit;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border-bottom: 1px solid var(--neutral-100);
+  outline: none;
+  padding: 0.65rem 0.25rem 0.25rem 0.25rem;
+}
+
+[placeholder]:focus::-webkit-input-placeholder {
+  transition: text-indent 0.5s 0.4s ease;
+  text-indent: -100%;
+  opacity: 1;
+}
+
+.form input:focus,
+.form textarea:focus {
+  outline: none;
+}
+
+.form--invalid label,
+.form--invalid p {
+  color: var(--danger);
+}
+
+.form--invalid input,
+.form--invalid textarea {
+  border-color: var(--danger);
+  background: var(--text-inverted);
+}

@@ -1,0 +1,13 @@
+:root {
+  --primary: #fff;
+  --secondary-50: #f3fff1;
+  --secondary-100: #dfffda;
+
+  --text: #1c211a;
+  --text-inverted: #f7f7f7;
+
+  --neutral-100: #f5f5f5;
+  --neutral-100-100: #adadad;
+
+  --danger: #c94949;
+}
