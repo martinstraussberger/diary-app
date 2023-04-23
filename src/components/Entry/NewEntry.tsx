@@ -15,47 +15,52 @@ import { MoodIcon } from '../../shared/util/moodiconList';
 
 import './NewEntry.css';
 import '../../shared/components/FormElements/Button.css';
+import { TagInput } from '../../shared/components/FormElements/TagsInput';
 
 export const NewEntry: React.FC = () => {
   const [displayList, setDisplayList] = useState<boolean>(false);
   const [selectedOption, setSelectedOption] = useState<Option | null>(null);
 
-  const handleDropdown = () => {
-    setDisplayList(!displayList);
-  };
-
   const [list, setList] = useState<DiaryEntryListProps[]>([]);
   const [title, setTitle] = useState('');
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [content, setContent] = useState('');
-  const [tag, setTag] = useState('');
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
   const listMemoProvider = useMemo(() => ({ list, setList }), [list, setList]);
+
+  const handleDropdown = () => {
+    setDisplayList(!displayList);
+  };
+
+  const handleTagChange = (tags: string[]) => {
+    setSelectedTags(tags);
+  };
 
   const onSubmit = useCallback(
     (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
+
+      const newEntry = {
+        id,
+        title,
+        selectedOption: selectedOption
+          ? `${selectedOption.value}${selectedOption.label}`
+          : '',
+        date: new Date(date),
+        content,
+        selectedTags: selectedTags || [],
+        index: list.length,
+      };
+
       setTitle('');
       setContent('');
       setSelectedOption(null);
-      setTag('');
-      setList([
-        ...list,
-        {
-          id,
-          title,
-          selectedOption: selectedOption
-            ? `${selectedOption.value}${selectedOption.label}`
-            : '',
-          date: new Date(date),
-          content,
-          tag,
-          index: list.length,
-        },
-      ]);
+      setSelectedTags([]);
+      setList([...list, newEntry]);
     },
 
-    [title, selectedOption, content, date, tag, list]
+    [title, selectedOption, content, date, selectedTags, list]
   );
 
   return (
@@ -93,14 +98,7 @@ export const NewEntry: React.FC = () => {
             value={content}
             onChange={(event) => setContent(event.target.value)}
           />
-
-          <Input
-            id='tags'
-            elementType='input'
-            label='Tags:'
-            value={tag}
-            onChange={(event) => setTag(event.target.value)}
-          />
+          <TagInput value={selectedTags || []} onChange={handleTagChange} />
           <Button
             className='circle-button'
             style={{ display: 'flex', justifyContent: 'center', padding: '12px' }}

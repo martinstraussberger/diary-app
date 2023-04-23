@@ -15,9 +15,12 @@ export const EntryList: React.FC<EntryListProps> = ({ list }) => {
   const [filterValue, setFilterValue] = useState('');
 
   const filteredList = useMemo(() => {
-    return list.filter((entry) =>
-      entry.tag.toLowerCase().includes(filterValue.toLowerCase())
-    );
+    return list.filter((entry) => {
+      const filterTag = entry.selectedTags.filter((tag) =>
+        tag.toLowerCase().includes(filterValue.toLowerCase())
+      );
+      return filterTag.length > 0;
+    });
   }, [list, filterValue]);
 
   const sortedList = useMemo(() => {
@@ -44,9 +47,9 @@ export const EntryList: React.FC<EntryListProps> = ({ list }) => {
         date.getDate() - date.getDay() + 6
       );
       const weekLabel = `${weekStart.toLocaleDateString(
-        'de-DE',
+        'en-EN',
         options
-      )} - ${weekEnd.toLocaleDateString('de-DE', options)}`;
+      )} - ${weekEnd.toLocaleDateString('en-EN', options)}`;
       if (!groups[weekLabel]) {
         groups[weekLabel] = [];
       }
@@ -89,7 +92,7 @@ export const EntryList: React.FC<EntryListProps> = ({ list }) => {
         />
         {Object.entries(groupedByWeek).map(([weekLabel, entries]: any) => (
           <div key={weekLabel}>
-            <h3>{weekLabel}</h3>
+            <h3 className='p-tag-week-row'>{weekLabel}</h3>
             <ul className='list'>
               {entries.map(
                 ({
@@ -98,16 +101,19 @@ export const EntryList: React.FC<EntryListProps> = ({ list }) => {
                   selectedOption,
                   date,
                   content,
-                  tag,
+                  selectedTags,
                   index,
                 }: DiaryEntryListProps) => (
                   <DiaryEntry
+                    id={id}
+                    selectedOption={selectedOption}
+                    index={0}
                     key={index}
                     title={title}
                     icon={selectedOption}
                     date={date}
                     content={content}
-                    tag={tag}
+                    selectedTags={selectedTags}
                     customElement={
                       <Button
                         className='delete-button'
@@ -121,9 +127,6 @@ export const EntryList: React.FC<EntryListProps> = ({ list }) => {
                         icon={<TrashIcon />}
                       />
                     }
-                    id={''}
-                    selectedOption={''}
-                    index={0}
                   />
                 )
               )}

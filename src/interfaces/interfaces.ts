@@ -18,7 +18,7 @@ export interface DiaryEntryListProps {
   selectedOption: string;
   date: Date;
   content: string;
-  tag: string;
+  selectedTags: string[];
   index: number;
 }
 export interface EntryListProps {

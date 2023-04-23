@@ -34,3 +34,20 @@
   justify-content: right;
   align-items: center;
 }
+
+.selected-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.__tags-entry {
+  background-color: var(--secondary-50);
+  border: 1px solid var(--neutral-300);
+}
+
+@media (max-width: 768px) {
+  .p-tag-week-row h3 {
+    font-size: 14px;
+  }
+}

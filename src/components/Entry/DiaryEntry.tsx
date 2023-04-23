@@ -2,11 +2,12 @@ import React from 'react';
 import { DiaryEntryProps } from '../../interfaces/interfaces';
 
 import './DiaryEntry.css';
+import '../../shared/components/FormElements/TagInput.css';
 
 export const DiaryEntry: React.FC<DiaryEntryProps> = ({
   title,
   content,
-  tag,
+  selectedTags,
   date,
   customElement,
   icon,
@@ -25,7 +26,15 @@ export const DiaryEntry: React.FC<DiaryEntryProps> = ({
         <p>
           <b>Tags</b>
         </p>
-        <p>{tag}</p>
+        <div className='selected-tags'>
+          {selectedTags
+            ? selectedTags.map((tag, index) => (
+                <span key={index} className='tag-input__tag __tags-entry '>
+                  {tag}
+                </span>
+              ))
+            : null}
+        </div>
       </div>
       <div className='entry-row-trash'>{customElement}</div>
     </div>
