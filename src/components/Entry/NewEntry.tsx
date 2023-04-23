@@ -114,7 +114,7 @@ export const NewEntry: React.FC = () => {
           <label htmlFor='dropdown-icon'>Show all Diary Entries</label>
           <div className='dropdown-icon'>
             {!displayList ? (
-              <div style={{ textAlign: 'center' }}>
+              <div>
                 <Button
                   className='circle-button'
                   style={{ display: 'flex', justifyContent: 'center', padding: '12px' }}
