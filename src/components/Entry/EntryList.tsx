@@ -1,11 +1,11 @@
-import React, { useState, useMemo, useContext } from 'react';
+import React, { useState, useMemo, useContext, useCallback } from 'react';
 import { DiaryEntryProps, EntryListProps } from '../../interfaces/interfaces';
 import { DiaryEntry } from './DiaryEntry';
 import { Input } from '../../shared/components/FormElements/Input';
 import { Button } from '../../shared/components/FormElements/Button';
 import { TrashIcon } from '../../shared/components/UIElements/utils/Icons';
 import { EntryListContext, ListContext } from '../../shared/util/Context';
-import { options } from '../../shared/util/Constants';
+import { id, options } from '../../shared/util/Constants';
 
 import './EntryList.css';
 
@@ -55,9 +55,17 @@ export const EntryList: React.FC<EntryListProps> = ({ list }) => {
     return groups;
   }, [sortedList]);
 
-  const handleDropdown = () => {
+  const handleDropdown = useCallback(() => {
     setDisplayList(!displayList);
-  };
+  }, [displayList]);
+
+  const dropdownListMemoProvider = useMemo(
+    () => ({
+      displayList,
+      handleDropdown,
+    }),
+    [displayList, handleDropdown]
+  );
 
   const handleDelete = (id: string) => {
     const entryIndex = list.findIndex((entry) => entry.id === id);
@@ -69,11 +77,11 @@ export const EntryList: React.FC<EntryListProps> = ({ list }) => {
   };
 
   return (
-    <EntryListContext.Provider value={{ displayList, handleDropdown }}>
+    <EntryListContext.Provider value={dropdownListMemoProvider}>
       <section className='grid-item-2'>
         <Input
           className='entry-input'
-          id='content'
+          id={`${'content' + id}`}
           elementType='input'
           placeholder='Filter by Tag'
           value={filterValue}
@@ -107,6 +115,7 @@ export const EntryList: React.FC<EntryListProps> = ({ list }) => {
                           justifyContent: 'center',
                         }}
                         type='button'
+                        ariaLabel='delete-button'
                         onClick={() => handleDelete(id)}
                         disabled={false}
                         icon={<TrashIcon />}

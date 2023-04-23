@@ -66,6 +66,7 @@ export interface ButtonProps {
   style?: CSSProperties;
   className?: string;
   type: 'submit' | 'reset' | 'button';
+  ariaLabel: string;
   disabled: boolean;
   id?: string;
   label?: string;

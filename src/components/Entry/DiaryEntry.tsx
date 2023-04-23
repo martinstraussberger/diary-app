@@ -1,13 +1,13 @@
 import React from 'react';
 import './DiaryEntry.css';
 
-interface DiaryEntry {
+export interface DiaryEntry {
   title: string;
   content: string;
   tag: string;
   date: Date;
   customElement: JSX.Element;
-  icon: any;
+  icon: string;
 }
 
 export const DiaryEntry: React.FC<DiaryEntry> = ({
@@ -21,7 +21,7 @@ export const DiaryEntry: React.FC<DiaryEntry> = ({
   return (
     <div className='entry-row'>
       <div className='entry-row-header'>
-        <h4>{icon}</h4>
+        <h4> I am {icon}</h4>
         <h3>{title}</h3>
         <p>{date.toLocaleDateString('de-DE')}</p>
       </div>

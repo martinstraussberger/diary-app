@@ -10,10 +10,17 @@ export const Button: React.FC<ButtonProps> = ({
   icon,
   id,
   label,
+  ariaLabel,
 }) => {
   return (
     <div style={style}>
-      <button className={className} onClick={onClick} type={type} disabled={disabled}>
+      <button
+        className={className}
+        onClick={onClick}
+        type={type}
+        aria-label={ariaLabel}
+        disabled={disabled}
+      >
         {icon}
       </button>
       <label htmlFor={id}>{label}</label>

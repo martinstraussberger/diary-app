@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { SelectDropdownMenuProps, Option } from '../../../interfaces/interfaces';
 
 import './SelectDropdownMenu.css';
@@ -11,19 +11,41 @@ export const SelectDropdownMenu: React.FC<SelectDropdownMenuProps<Option>> = ({
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<Option | null>(null);
 
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
   const handleOptionClick = (option: Option) => {
     setSelectedOption(option);
     onChange(option);
     setIsOpen(false);
-    // TODO: change stage of selected mood once submitted
   };
 
   const handleToggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
+  const handleClickOutside = (event: MouseEvent) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
+    setSelectedOption(null);
+  }, [onChange, selectedOption]);
+
   return (
-    <div className='select-dropdown-menu'>
+    <div className='select-dropdown-menu' ref={dropdownRef}>
       <div className='select-dropdown-menu-label'>{label}</div>
       <div className='select-dropdown-menu-selected' onClick={handleToggleDropdown}>
         {selectedOption
@@ -38,7 +60,7 @@ export const SelectDropdownMenu: React.FC<SelectDropdownMenuProps<Option>> = ({
               className='select-dropdown-menu-option'
               onClick={() => handleOptionClick(option)}
             >
-              {option.value}
+              {option.value} {option.label}
             </div>
           ))}
         </div>

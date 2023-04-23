@@ -1,8 +1,8 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { v4 as uuid } from 'uuid';
 import { DiaryEntryProps } from '../../interfaces/interfaces';
 
 import { EntryList } from './EntryList';
+import { ListContext } from '../../shared/util/Context';
 import { Input } from '../../shared/components/FormElements/Input';
 import { Button } from '../../shared/components/FormElements/Button';
 import {
@@ -16,9 +16,7 @@ import { moodycons } from '../../shared/util/moodiconList';
 
 import './NewEntry.css';
 import '../../shared/components/FormElements/Button.css';
-import { ListContext } from '../../shared/util/Context';
-
-const id = uuid();
+import { id } from '../../shared/util/Constants';
 
 export const NewEntry: React.FC = () => {
   const [displayList, setDisplayList] = useState<boolean>(false);
@@ -34,7 +32,7 @@ export const NewEntry: React.FC = () => {
   const [content, setContent] = useState('');
   const [tag, setTag] = useState('');
 
-  const listProvider = useMemo(() => ({ list, setList }), [list, setList]);
+  const listMemoProvider = useMemo(() => ({ list, setList }), [list, setList]);
 
   const onSubmit = useCallback(
     (event: React.FormEvent<HTMLFormElement>) => {
@@ -63,7 +61,7 @@ export const NewEntry: React.FC = () => {
 
   return (
     <>
-      <ListContext.Provider value={listProvider}>
+      <ListContext.Provider value={listMemoProvider}>
         <form className='entry-form' action='' onSubmit={onSubmit}>
           <Input
             className='entry-input'
@@ -74,14 +72,12 @@ export const NewEntry: React.FC = () => {
             value={title}
             onChange={(event) => setTitle(event.target.value)}
           />
-
           <SelectDropdownMenu
             options={moodycons}
             onChange={setSelectedOption}
             label='Select your Moodycon'
             value={selectedOption}
           />
-
           <Input
             id='date'
             elementType='input'
@@ -92,7 +88,7 @@ export const NewEntry: React.FC = () => {
           />
           <Input
             className='entry-input'
-            id='content'
+            id={`${'content' + id}`}
             elementType='textarea'
             label='Note:'
             value={content}
@@ -110,6 +106,7 @@ export const NewEntry: React.FC = () => {
             className='circle-button'
             style={{ display: 'flex', justifyContent: 'center', padding: '12px' }}
             type='submit'
+            ariaLabel='add-button'
             disabled={false}
             icon={<AddIcon />}
           />
@@ -123,6 +120,7 @@ export const NewEntry: React.FC = () => {
                   className='circle-button'
                   style={{ display: 'flex', justifyContent: 'center', padding: '12px' }}
                   type='submit'
+                  ariaLabel='dropdown-closed-button'
                   disabled={false}
                   icon={<DropdownIconUp onClick={() => handleDropdown()} />}
                 />
@@ -135,6 +133,7 @@ export const NewEntry: React.FC = () => {
                 style={{ display: 'flex', justifyContent: 'center', padding: '12px' }}
                 type='submit'
                 disabled={false}
+                ariaLabel='dropdown-open-button'
                 icon={<DropdownIconDown onClick={() => handleDropdown()} />}
               />
             )}
