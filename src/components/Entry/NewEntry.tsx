@@ -12,7 +12,7 @@ import {
 } from '../../shared/components/UIElements/utils/Icons';
 
 import { SelectDropdownMenu } from '../../shared/components/FormElements/SelectDropdownMenu';
-import { moodycons } from '../../shared/util/moodiconList';
+import { MoodIcon } from '../../shared/util/moodiconList';
 
 import './NewEntry.css';
 import '../../shared/components/FormElements/Button.css';
@@ -73,9 +73,9 @@ export const NewEntry: React.FC = () => {
             onChange={(event) => setTitle(event.target.value)}
           />
           <SelectDropdownMenu
-            options={moodycons}
+            options={MoodIcon}
             onChange={setSelectedOption}
-            label='Select your Moodycon'
+            label='What is your mood today?'
             value={selectedOption}
           />
           <Input
