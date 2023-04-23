@@ -1,0 +1,6 @@
+{
+  "short_name": "Diary App",
+  "name": "Diary App build with create react app and typescript template",
+  "start_url": ".",
+  "display": "standalone"
+}

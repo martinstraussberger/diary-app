@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/martinstraussberger/diary-app/static/css/main.b4c497c1.css",
+    "main.js": "/martinstraussberger/diary-app/static/js/main.fe32906d.js",
+    "index.html": "/martinstraussberger/diary-app/index.html",
+    "main.b4c497c1.css.map": "/martinstraussberger/diary-app/static/css/main.b4c497c1.css.map",
+    "main.fe32906d.js.map": "/martinstraussberger/diary-app/static/js/main.fe32906d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b4c497c1.css",
+    "static/js/main.fe32906d.js"
+  ]
+}
