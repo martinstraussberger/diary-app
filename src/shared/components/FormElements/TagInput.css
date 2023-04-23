@@ -1,0 +1,40 @@
+.tag-input {
+  display: flex;
+  flex-wrap: wrap;
+  width: 88%;
+  align-items: center;
+  border: 1px solid var(--neutral-100);
+  padding: 10px 10px 0 10px;
+  border-radius: 5px;
+  min-height: 40px;
+}
+
+.tag-input__tag {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text);
+  border-radius: 6px;
+  padding: 5px 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.__field {
+  background-color: var(--neutral-200);
+}
+
+.tag-input__tag-remove {
+  margin-left: 5px;
+  background-color: var(--neutral-200);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.tag-input__input {
+  border: none;
+  outline: none;
+  flex-grow: 1;
+  padding: 5px;
+  font-size: 16px;
+}
