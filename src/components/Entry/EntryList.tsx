@@ -8,7 +8,7 @@ import { DiaryEntry } from './DiaryEntry';
 import { Input } from '../../shared/components/FormElements/Input';
 import { Button } from '../../shared/components/FormElements/Button';
 import { TrashIcon } from '../../shared/components/UIElements/utils/Icons';
-import { EntryListContext } from '../../shared/util/CreateContext';
+import { EntryListContext } from '../../shared/util/Context';
 import { options } from '../../shared/util/Constants';
 
 import './EntryList.css';
