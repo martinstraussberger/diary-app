@@ -1,26 +1,24 @@
-import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { DiaryEntryListProps } from '../../interfaces/interfaces';
+import React, { useCallback, useMemo, useState } from 'react';
+import { DiaryEntryListProps, Option } from '../../interfaces/interfaces';
 
+import { id } from '../../shared/util/Constants';
 import { EntryList } from './EntryList';
 import { ListContext } from '../../shared/util/Context';
 import { Input } from '../../shared/components/FormElements/Input';
 import { Button } from '../../shared/components/FormElements/Button';
 import {
-  AddIcon,
   DropdownIconDown,
   DropdownIconUp,
 } from '../../shared/components/UIElements/utils/Icons';
-
 import { SelectDropdownMenu } from '../../shared/components/FormElements/SelectDropdownMenu';
 import { MoodIcon } from '../../shared/util/moodiconList';
 
 import './NewEntry.css';
 import '../../shared/components/FormElements/Button.css';
-import { id } from '../../shared/util/Constants';
 
 export const NewEntry: React.FC = () => {
   const [displayList, setDisplayList] = useState<boolean>(false);
-  const [selectedOption, setSelectedOption] = useState<any | null>(null);
+  const [selectedOption, setSelectedOption] = useState<Option | null>(null);
 
   const handleDropdown = () => {
     setDisplayList(!displayList);
@@ -38,8 +36,8 @@ export const NewEntry: React.FC = () => {
     (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       setTitle('');
-      setSelectedOption('');
       setContent('');
+      setSelectedOption(null);
       setTag('');
       setList([
         ...list,
@@ -56,6 +54,7 @@ export const NewEntry: React.FC = () => {
         },
       ]);
     },
+
     [title, selectedOption, content, date, tag, list]
   );
 

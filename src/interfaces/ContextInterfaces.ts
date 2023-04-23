@@ -1,4 +1,4 @@
-import { DiaryEntryListProps } from './interfaces';
+import { DiaryEntryListProps, SelectDropdownMenuProps, Option } from './interfaces';
 
 export interface EntryListContextProps {
   displayList: boolean;

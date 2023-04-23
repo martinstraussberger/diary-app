@@ -35,12 +35,7 @@ export interface SelectDropdownMenuProps<T> {
   options: T[];
   onChange: (selectedOption: T) => void;
   label: string;
-  value: string;
-}
-
-export interface Option {
-  value: string;
-  label: string;
+  value: T | null;
 }
 
 /* Input */

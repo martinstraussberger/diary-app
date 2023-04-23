@@ -42,6 +42,7 @@ export const SelectDropdownMenu: React.FC<SelectDropdownMenuProps<Option>> = ({
   }, [isOpen]);
 
   useEffect(() => {
+    // cleanup
     return () => {
       setSelectedOption(null);
     };
