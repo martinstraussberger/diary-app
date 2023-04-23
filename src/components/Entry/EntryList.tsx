@@ -1,6 +1,5 @@
 import React, { useState, useMemo, useContext } from 'react';
 import {
-  ContextProps,
   DiaryEntryProps,
   EntryListProps,
   ListContext,
@@ -9,13 +8,10 @@ import { DiaryEntry } from './DiaryEntry';
 import { Input } from '../../shared/components/FormElements/Input';
 import { Button } from '../../shared/components/FormElements/Button';
 import { TrashIcon } from '../../shared/components/UIElements/utils/Icons';
+import { EntryListContext } from '../../shared/util/CreateContext';
+import { options } from '../../shared/util/Constants';
 
 import './EntryList.css';
-
-export const EntryListContext = React.createContext<ContextProps>({
-  displayList: false,
-  handleDropdown: () => {},
-});
 
 export const EntryList: React.FC<EntryListProps> = ({ list }) => {
   const { setList } = useContext(ListContext);
@@ -37,7 +33,9 @@ export const EntryList: React.FC<EntryListProps> = ({ list }) => {
   }, [filteredList]);
 
   const groupedByWeek = useMemo(() => {
-    return sortedList.reduce((groups: any, entry: any) => {
+    const groups: { [key: string]: DiaryEntryProps[] } = {};
+
+    sortedList.forEach((entry) => {
       const date = new Date(entry.date);
       const weekStart = new Date(
         date.getFullYear(),
@@ -49,21 +47,16 @@ export const EntryList: React.FC<EntryListProps> = ({ list }) => {
         date.getMonth(),
         date.getDate() - date.getDay() + 6
       );
-      const weekLabel = `${weekStart.toLocaleDateString('de-DE', {
-        weekday: 'long',
-        month: 'long',
-        day: 'numeric',
-      })} - ${weekEnd.toLocaleDateString('de-DE', {
-        weekday: 'long',
-        month: 'long',
-        day: 'numeric',
-      })}`;
+      const weekLabel = `${weekStart.toLocaleDateString(
+        'de-DE',
+        options
+      )}} - ${weekEnd.toLocaleDateString('de-DE', options)}}`;
       if (!groups[weekLabel]) {
         groups[weekLabel] = [];
       }
       groups[weekLabel].push(entry);
-      return groups;
-    }, {});
+    });
+    return groups;
   }, [sortedList]);
 
   const handleDropdown = () => {
