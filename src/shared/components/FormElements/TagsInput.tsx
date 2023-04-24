@@ -16,7 +16,7 @@ export const TagInput: React.FC<TagInputProps> = ({ onChange, value }) => {
     inputValue: '',
   });
 
-  const handleInputKeyDown = useCallback(
+  const handleInputKeyUp = useCallback(
     (event: React.KeyboardEvent<HTMLInputElement>) => {
       if (event.key === ' ') {
         event.preventDefault();
@@ -76,7 +76,7 @@ export const TagInput: React.FC<TagInputProps> = ({ onChange, value }) => {
       <input
         type='text'
         className='tag-input__input'
-        onKeyDown={handleInputKeyDown}
+        onKeyUp={handleInputKeyUp}
         onChange={handleInputChange}
         value={state.inputValue}
       />
