@@ -2,23 +2,19 @@ import React, { useCallback, useMemo, useState } from 'react';
 import { DiaryEntryListProps, Option } from '../../interfaces/interfaces';
 
 import { id } from '../../shared/util/Constants';
-import { EntryList } from './EntryList';
 import { ListContext } from '../../shared/util/Context';
 import { Input } from '../../shared/components/FormElements/Input';
 import { Button } from '../../shared/components/FormElements/Button';
-import {
-  DropdownIconDown,
-  DropdownIconUp,
-} from '../../shared/components/UIElements/utils/Icons';
+
 import { SelectDropdownMenu } from '../../shared/components/FormElements/SelectDropdownMenu';
 import { MoodIcon } from '../../shared/util/moodiconList';
 
 import './NewEntry.css';
 import '../../shared/components/FormElements/Button.css';
 import { TagInput } from '../../shared/components/FormElements/TagsInput';
+import { ShowEntries } from '../../shared/components/UIElements/ShowEntries';
 
 export const NewEntry: React.FC = () => {
-  const [displayList, setDisplayList] = useState<boolean>(false);
   const [selectedOption, setSelectedOption] = useState<Option | null>(null);
   const [list, setList] = useState<DiaryEntryListProps[]>([]);
   const [title, setTitle] = useState('');
@@ -28,10 +24,6 @@ export const NewEntry: React.FC = () => {
   const [resetTags, setResetTags] = useState<boolean>(false);
 
   const listMemoProvider = useMemo(() => ({ list, setList }), [list, setList]);
-
-  const handleDropdown = () => {
-    setDisplayList(!displayList);
-  };
 
   const handleTagChange = (tags: string[]) => {
     setSelectedTags(tags);
@@ -61,7 +53,6 @@ export const NewEntry: React.FC = () => {
       setSelectedTags([]);
       setResetTags(true);
     },
-
     [title, selectedOption, content, date, selectedTags, list]
   );
 
@@ -115,34 +106,7 @@ export const NewEntry: React.FC = () => {
             text={<h3>Save</h3>}
           />
         </form>
-        <section className='grid-item __item-2'>
-          <label htmlFor='dropdown-icon'>Show all Diary Entries</label>
-          <div className='dropdown-icon'>
-            {!displayList ? (
-              <div>
-                <Button
-                  className='circle-button'
-                  style={{ display: 'flex', justifyContent: 'center', padding: '12px' }}
-                  type='submit'
-                  ariaLabel='dropdown-closed-button'
-                  disabled={false}
-                  icon={<DropdownIconUp onClick={() => handleDropdown()} />}
-                />
-
-                <EntryList list={list} />
-              </div>
-            ) : (
-              <Button
-                className='circle-button'
-                style={{ display: 'flex', justifyContent: 'center', padding: '12px' }}
-                type='submit'
-                disabled={false}
-                ariaLabel='dropdown-open-button'
-                icon={<DropdownIconDown onClick={() => handleDropdown()} />}
-              />
-            )}
-          </div>
-        </section>
+        <ShowEntries list={list} setList={setList} />
       </ListContext.Provider>
     </>
   );

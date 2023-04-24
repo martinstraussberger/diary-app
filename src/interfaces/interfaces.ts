@@ -49,7 +49,7 @@ export default interface InputProps {
   rows?: number;
   onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   value: string;
-  onKeyUp?: any;
+  onKeyUp?: () => void;
 }
 
 /* Button */
