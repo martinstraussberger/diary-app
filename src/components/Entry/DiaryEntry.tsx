@@ -3,6 +3,7 @@ import { DiaryEntryProps } from '../../interfaces/interfaces';
 
 import './DiaryEntry.css';
 import '../../shared/components/FormElements/TagInput.css';
+import { id } from '../../shared/util/Constants';
 
 export const DiaryEntry: React.FC<DiaryEntryProps> = ({
   title,
@@ -29,7 +30,7 @@ export const DiaryEntry: React.FC<DiaryEntryProps> = ({
         <div className='selected-tags'>
           {selectedTags
             ? selectedTags.map((tag, index) => (
-                <span key={index} className='tag-input__tag __tags-entry '>
+                <span key={index + id} className='tag-input__tag __tags-entry '>
                   {tag ? tag : 'No tags selected'}
                 </span>
               ))

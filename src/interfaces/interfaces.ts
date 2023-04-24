@@ -65,3 +65,9 @@ export interface ButtonProps {
   icon?: JSX.Element;
   text?: string | JSX.Element;
 }
+
+/* Show Entries */
+export interface ShowEntriesProps {
+  list: DiaryEntryListProps[];
+  setList: React.Dispatch<React.SetStateAction<DiaryEntryListProps[]>>;
+}
