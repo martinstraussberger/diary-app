@@ -11,7 +11,7 @@ interface TagInputState {
   inputValue: string;
 }
 
-export const TagInput = ({ onChange, value, reset }: TagInputProps) => {
+export const TagInput: React.FC<TagInputProps> = ({ onChange, value, reset }) => {
   const [state, setState] = useState<TagInputState>({
     tags: value,
     inputValue: '',
