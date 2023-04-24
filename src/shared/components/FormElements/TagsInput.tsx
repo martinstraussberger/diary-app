@@ -1,11 +1,4 @@
-import {
-  forwardRef,
-  useState,
-  useCallback,
-  useImperativeHandle,
-  useRef,
-  useEffect,
-} from 'react';
+import { forwardRef, useState, useCallback, useEffect } from 'react';
 
 interface TagInputProps {
   onChange: (tags: string[]) => void;
@@ -24,10 +17,6 @@ export const TagInput = forwardRef<HTMLInputElement, TagInputProps>(
       tags: value,
       inputValue: '',
     });
-
-    const inputRef = useRef<HTMLInputElement>(null);
-
-    useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
 
     const handleInputKeyUp = useCallback(
       (event: React.KeyboardEvent<HTMLInputElement>) => {

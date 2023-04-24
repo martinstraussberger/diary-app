@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { DiaryEntryListProps, Option } from '../../interfaces/interfaces';
 
 import { id } from '../../shared/util/Constants';
@@ -18,8 +18,6 @@ import '../../shared/components/FormElements/Button.css';
 import { TagInput } from '../../shared/components/FormElements/TagsInput';
 
 export const NewEntry: React.FC = () => {
-  const inputRef = useRef<HTMLInputElement>(null);
-
   const [displayList, setDisplayList] = useState<boolean>(false);
   const [selectedOption, setSelectedOption] = useState<Option | null>(null);
   const [list, setList] = useState<DiaryEntryListProps[]>([]);
@@ -64,7 +62,7 @@ export const NewEntry: React.FC = () => {
       setResetTags(true);
     },
 
-    [title, selectedOption, content, date, selectedTags, list, inputRef]
+    [title, selectedOption, content, date, selectedTags, list]
   );
 
   return (
@@ -103,7 +101,7 @@ export const NewEntry: React.FC = () => {
             onChange={(event) => setContent(event.target.value)}
           />
           {resetTags ? (
-            <TagInput reset={true} ref={inputRef} onChange={handleTagChange} value={[]} />
+            <TagInput reset={true} onChange={handleTagChange} value={[]} />
           ) : (
             <TagInput onChange={handleTagChange} value={selectedTags} reset={false} />
           )}
