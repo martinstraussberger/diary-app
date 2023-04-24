@@ -12,6 +12,7 @@ export const Input: React.FC<InputProps> = ({
   placeholder,
   rows,
   onChange,
+  onKeyUp,
   value,
 }) => {
   const element =
@@ -23,6 +24,7 @@ export const Input: React.FC<InputProps> = ({
         placeholder={placeholder}
         onChange={onChange}
         value={value}
+        onKeyUp={onKeyUp}
       />
     ) : (
       <textarea

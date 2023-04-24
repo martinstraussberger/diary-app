@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { DiaryEntryListProps, Option } from '../../interfaces/interfaces';
 
 import { id } from '../../shared/util/Constants';
@@ -18,14 +18,16 @@ import '../../shared/components/FormElements/Button.css';
 import { TagInput } from '../../shared/components/FormElements/TagsInput';
 
 export const NewEntry: React.FC = () => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const [displayList, setDisplayList] = useState<boolean>(false);
   const [selectedOption, setSelectedOption] = useState<Option | null>(null);
-
   const [list, setList] = useState<DiaryEntryListProps[]>([]);
   const [title, setTitle] = useState('');
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [content, setContent] = useState('');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [resetTags, setResetTags] = useState<boolean>(false);
 
   const listMemoProvider = useMemo(() => ({ list, setList }), [list, setList]);
 
@@ -35,6 +37,7 @@ export const NewEntry: React.FC = () => {
 
   const handleTagChange = (tags: string[]) => {
     setSelectedTags(tags);
+    setResetTags(false);
   };
 
   const onSubmit = useCallback(
@@ -49,18 +52,19 @@ export const NewEntry: React.FC = () => {
           : '',
         date: new Date(date),
         content,
-        selectedTags: selectedTags || [],
+        selectedTags: selectedTags[0] ? selectedTags : [''],
+
         index: list.length,
       };
-
+      setList([...list, newEntry]);
       setTitle('');
       setContent('');
       setSelectedOption(null);
-      setSelectedTags([' ']);
-      setList([...list, newEntry]);
+      setSelectedTags([]);
+      setResetTags(true);
     },
 
-    [title, selectedOption, content, date, selectedTags, list]
+    [title, selectedOption, content, date, selectedTags, list, inputRef]
   );
 
   return (
@@ -98,7 +102,12 @@ export const NewEntry: React.FC = () => {
             value={content}
             onChange={(event) => setContent(event.target.value)}
           />
-          <TagInput value={selectedTags || []} onChange={handleTagChange} />
+          {resetTags ? (
+            <TagInput reset={true} ref={inputRef} onChange={handleTagChange} value={[]} />
+          ) : (
+            <TagInput onChange={handleTagChange} value={selectedTags} reset={false} />
+          )}
+
           <Button
             className='circle-button'
             style={{ display: 'flex', justifyContent: 'center', padding: '12px' }}

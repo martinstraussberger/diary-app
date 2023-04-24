@@ -30,7 +30,7 @@ export const DiaryEntry: React.FC<DiaryEntryProps> = ({
           {selectedTags
             ? selectedTags.map((tag, index) => (
                 <span key={index} className='tag-input__tag __tags-entry '>
-                  {tag}
+                  {tag ? tag : 'No tags selected'}
                 </span>
               ))
             : null}
