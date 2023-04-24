@@ -56,7 +56,7 @@ export const NewEntry: React.FC = () => {
       setTitle('');
       setContent('');
       setSelectedOption(null);
-      setSelectedTags([]);
+      setSelectedTags([' ']);
       setList([...list, newEntry]);
     },
 

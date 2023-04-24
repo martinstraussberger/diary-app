@@ -18,9 +18,10 @@ export const TagInput: React.FC<TagInputProps> = ({ onChange, value }) => {
 
   const handleInputKeyUp = useCallback(
     (event: React.KeyboardEvent<HTMLInputElement>) => {
-      if (event.key === ' ') {
+      const newTag = state.inputValue.trim();
+
+      if (event.code === 'Space') {
         event.preventDefault();
-        const newTag = state.inputValue.trim();
         if (newTag !== '' && !state.tags.includes(newTag)) {
           const newTags = [...state.tags, newTag];
           setState({
