@@ -20,7 +20,7 @@ export const TagInput: React.FC<TagInputProps> = ({ onChange, value }) => {
     (event: React.KeyboardEvent<HTMLInputElement>) => {
       const newTag = state.inputValue.trim();
 
-      if (event.code === 'Space') {
+      if (event.key === ',') {
         event.preventDefault();
         if (newTag !== '' && !state.tags.includes(newTag)) {
           const newTags = [...state.tags, newTag];
