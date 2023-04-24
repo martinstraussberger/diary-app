@@ -91,7 +91,7 @@ export const EntryList: React.FC<EntryListProps> = ({ list }) => {
           onChange={(event) => setFilterValue(event.target.value)}
         />
         {Object.entries(groupedByWeek).map(([weekLabel, entries]: any) => (
-          <div key={weekLabel}>
+          <div className='week-container' key={weekLabel}>
             <h3 className='p-tag-week-row'>{weekLabel}</h3>
             <ul className='list'>
               {entries.map(

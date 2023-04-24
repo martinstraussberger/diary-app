@@ -1,7 +1,6 @@
-# Coming soon
+# Diary App
 
 Represents a Coding Challenge of an interactive Diary App. This version is a pure frontend implementation without persistent storage
-
 
 # Setup
 
@@ -11,3 +10,8 @@ Represents a Coding Challenge of an interactive Diary App. This version is a pur
 Or visit the Link below for testing it on Desktop:
 
 https://martinstraussberger.dev/diary-app/
+
+### Notes UX:
+
+- Tag container does not except a specific tag twice
+- A Tag is created if the user presses the "Space" Key
