@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/diary-app/static/css/main.2a845f8c.css",
-    "main.js": "/diary-app/static/js/main.829b017a.js",
+    "main.css": "/diary-app/static/css/main.69d9cf4c.css",
+    "main.js": "/diary-app/static/js/main.c7b6847e.js",
     "index.html": "/diary-app/index.html",
-    "main.2a845f8c.css.map": "/diary-app/static/css/main.2a845f8c.css.map",
-    "main.829b017a.js.map": "/diary-app/static/js/main.829b017a.js.map"
+    "main.69d9cf4c.css.map": "/diary-app/static/css/main.69d9cf4c.css.map",
+    "main.c7b6847e.js.map": "/diary-app/static/js/main.c7b6847e.js.map"
   },
   "entrypoints": [
-    "static/css/main.2a845f8c.css",
-    "static/js/main.829b017a.js"
+    "static/css/main.69d9cf4c.css",
+    "static/js/main.c7b6847e.js"
   ]
 }
