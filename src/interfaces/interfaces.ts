@@ -52,6 +52,18 @@ export default interface InputProps {
   onKeyUp?: () => void;
 }
 
+/* TagInput */
+export interface TagInputProps {
+  onChange: (tags: string[]) => void;
+  value: string[];
+  reset: boolean;
+}
+
+export interface TagInputState {
+  tags: string[];
+  inputValue: string;
+}
+
 /* Button */
 export interface ButtonProps {
   style?: CSSProperties;

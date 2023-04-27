@@ -1,15 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
-
-interface TagInputProps {
-  onChange: (tags: string[]) => void;
-  value: string[];
-  reset: boolean;
-}
-
-interface TagInputState {
-  tags: string[];
-  inputValue: string;
-}
+import { TagInputProps, TagInputState } from '../../../interfaces/interfaces';
 
 export const TagInput: React.FC<TagInputProps> = ({ onChange, value, reset }) => {
   const [state, setState] = useState<TagInputState>({
@@ -18,10 +8,11 @@ export const TagInput: React.FC<TagInputProps> = ({ onChange, value, reset }) =>
   });
 
   const handleInputKeyUp = useCallback(
-    (event: React.KeyboardEvent<HTMLInputElement>) => {
+    (event: React.KeyboardEvent) => {
       const newTag = state.inputValue.trim();
-
-      if (event.code === 'Space') {
+      console.log(event);
+      // event.key für native browser support on android
+      if (event.code === 'Space' || event.key === ' ') {
         event.preventDefault();
         if (newTag !== '' && !state.tags.includes(newTag)) {
           const newTags = [...state.tags, newTag];

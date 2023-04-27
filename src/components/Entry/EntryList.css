@@ -1,8 +1,11 @@
 .list {
   display: flex;
   gap: 10px;
-  width: 86%;
   flex-direction: column;
   margin: 0;
   max-width: 40rem;
+}
+
+.tag-filter {
+  text-align: center;
 }

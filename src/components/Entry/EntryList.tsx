@@ -83,7 +83,7 @@ export const EntryList: React.FC<EntryListProps> = ({ list }) => {
     <EntryListContext.Provider value={dropdownListMemoProvider}>
       <section className='grid-item __item-3'>
         <Input
-          className='entry-input'
+          className='entry-input tag-filter'
           id={`${'content' + id}`}
           elementType='input'
           placeholder='Filter by Tag'
@@ -92,8 +92,8 @@ export const EntryList: React.FC<EntryListProps> = ({ list }) => {
         />
         {Object.entries(groupedByWeek).map(([weekLabel, entries]: any) => (
           <div className='week-container' key={weekLabel}>
-            <h3 className='p-tag-week-row'>{weekLabel}</h3>
-            <ul className='list'>
+            <h4 className='h-tag-week-row'>{weekLabel}</h4>
+            <div className='list'>
               {entries.map(
                 ({
                   id,
@@ -130,7 +130,7 @@ export const EntryList: React.FC<EntryListProps> = ({ list }) => {
                   />
                 )
               )}
-            </ul>
+            </div>
           </div>
         ))}
       </section>

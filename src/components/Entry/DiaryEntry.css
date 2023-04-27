@@ -1,9 +1,10 @@
 .entry-row {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   text-align: left;
   border-radius: 6px;
   background-color: var(--secondary-50);
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
 }
 
 .entry-row-header,
@@ -50,8 +51,8 @@
   text-align: center;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .p-tag-week-row h3 {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
 }
