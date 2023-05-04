@@ -10,7 +10,6 @@ export const TagInput: React.FC<TagInputProps> = ({ onChange, value, reset }) =>
   const handleInputKeyUp = useCallback(
     (event: React.KeyboardEvent) => {
       const newTag = state.inputValue.trim();
-      console.log(event);
       // event.key für native browser support on android
       if (event.code === 'Space' || event.key === ' ') {
         event.preventDefault();
