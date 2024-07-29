@@ -1,6 +1,6 @@
 {
   "name": "diary-app",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://martinstraussberger.dev/diary-app/",
   "private": true,
   "dependencies": {
@@ -44,6 +44,6 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^5.0.0"
+    "gh-pages": "^6.1.1"
   }
 }
