@@ -17,9 +17,16 @@ Represents a Coding Challenge of an interactive Diary App built with React. This
 1. Clone the Project and run `npm install` in your terminal
 2. Once the repo is cloned cd into the folder and run `npm start`
 
-Or visit the Link below for testing it on Desktop:
+# Deployment
+1. Run `npm run build` to create a production build
+2. Run `npm run deploy:pages` to deploy the app to Github Pages
+
+Visit the Link below to see the deployed version of the app:
 
 https://martinstraussberger.dev/diary-app/
+
+*Troubleshooting:*
+- If the deployment fails, delete the previous build folder and try again
 
 ### Notes UX:
 
